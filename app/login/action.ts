@@ -1,6 +1,6 @@
-import {redirect} from "next/navigation";
+"use server";
 
-"user server";
+import {redirect} from "next/navigation";
 
 export async function handleForm(prevState:any,formData:FormData){
     redirect("/");
