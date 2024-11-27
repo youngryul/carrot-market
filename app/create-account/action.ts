@@ -1,5 +1,10 @@
 "use client";
 import { z } from "zod";
+import {
+    PASSWORD_MIN_LENGTH,
+    PASSWORD_REGEX,
+    PASSWORD_REGEX_ERROR,
+} from "@/app/lib/constants";
 
 const formSchema = z
     .object({
@@ -8,15 +13,17 @@ const formSchema = z
                 invalid_type_error: "Username must be a string!",
                 required_error: "Where is my username???",
             })
-            .min(3, "Way too short!!!")
-            .max(10, "That is too looooong!")
+            .trim()
+            .toLowerCase()
+            .transform((username) => `🔥 ${username}`)
             .refine(
                 (username) => !username.includes("potato"),
                 "No potatoes allowed!"
             ),
         email: z.string().email(),
-        password: z.string().min(10),
-        confirm_password: z.string().min(10),
+        password: z.string().min(10).min(PASSWORD_MIN_LENGTH)
+            .regex(PASSWORD_REGEX, PASSWORD_REGEX_ERROR),
+        confirmPW: z.string().min(PASSWORD_MIN_LENGTH),
     })
     .superRefine(({ password, confirm_password }, ctx) => {
         if (password !== confirm_password) {

@@ -5,6 +5,7 @@ import FormButton from "@/app/components/form-btn";
 import SocialLogin from "@/app/components/social-login";
 import {useActionState} from "react";
 import {createAccount} from "@/app/create-account/action";
+import { PASSWORD_MIN_LENGTH } from "@/app/lib/constants";
 
 
 export default function CreateAccount() {
@@ -22,6 +23,8 @@ export default function CreateAccount() {
                     placeholder="UserName"
                     required
                     errors={state?.fieldErrors.username}
+                    minLength={PASSWORD_MIN_LENGTH}
+                    maxLength={10}
                 />
                 <FormInput
                     name="email"
