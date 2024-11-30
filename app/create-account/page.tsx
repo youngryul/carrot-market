@@ -18,7 +18,7 @@ export default function CreateAccount() {
             </div>
             <form action={action} className="flex flex-col gap-3">
                 <FormInput
-                    name="userName"
+                    name="username"
                     type="text"
                     placeholder="UserName"
                     required
