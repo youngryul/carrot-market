@@ -4,7 +4,7 @@ import FormInput from "@/app/components/form-input";
 import FormButton from "@/app/components/form-btn";
 import SocialLogin from "@/app/components/social-login";
 import {useActionState} from "react";
-import {handleForm, logIn} from "@/app/login/action";
+import {handleForm, logIn} from "@/app/(auth)/login/action";
 import {PASSWORD_MIN_LENGTH} from "@/app/lib/constants";
 
 export default function Login() {
